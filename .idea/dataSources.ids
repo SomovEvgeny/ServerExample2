@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="PostgreSQL - Bank@localhost" uuid="23117adc-8922-44dd-83cd-f1aec30597e0">
+    <database-info product="PostgreSQL" version="9.5.0" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.5">
+      <database id="1" name="Bank"/>
+      <schema id="2" parent="1" name="public">
+        <object-id>2200</object-id>
+        <comment>standard public schema</comment>
+        <introspection-state-number>673</introspection-state-number>
+        <introspection-timestamp>2016-05-20.16:54:00.789</introspection-timestamp>
+      </schema>
+      <table id="3" parent="2" name="accounts">
+        <object-id>16408</object-id>
+        <state-number>673</state-number>
+      </table>
+      <table id="4" parent="2" name="clients">
+        <object-id>16400</object-id>
+        <state-number>672</state-number>
+      </table>
+      <table id="5" parent="2" name="transaction">
+        <object-id>16418</object-id>
+        <state-number>673</state-number>
+      </table>
+      <column id="6" parent="3" name="id">
+        <state-number>672</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint</data-type>
+      </column>
+      <column id="7" parent="3" name="owner_id">
+        <state-number>672</state-number>
+        <data-type>bigint</data-type>
+      </column>
+      <column id="8" parent="3" name="amount">
+        <state-number>672</state-number>
+        <data-type>double precision</data-type>
+      </column>
+      <index id="9" parent="3" name="accounts_pkey">
+        <object-id>16411</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="10" parent="3" name="accounts_pkey">
+        <columns>id</columns>
+        <underlying-index>accounts_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="11" parent="3" name="accounts_owner_id_fkey">
+        <columns>owner_id</columns>
+        <ref-key>~.clients.clients_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="12" parent="4" name="id">
+        <state-number>671</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint</data-type>
+      </column>
+      <column id="13" parent="4" name="name">
+        <state-number>671</state-number>
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="14" parent="4" name="address">
+        <state-number>671</state-number>
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="15" parent="4" name="age">
+        <state-number>671</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <index id="16" parent="4" name="clients_pkey">
+        <object-id>16406</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="17" parent="4" name="clients_pkey">
+        <columns>id</columns>
+        <underlying-index>clients_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="18" parent="5" name="id">
+        <state-number>673</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint</data-type>
+      </column>
+      <column id="19" parent="5" name="output_account">
+        <state-number>673</state-number>
+        <data-type>bigint</data-type>
+      </column>
+      <column id="20" parent="5" name="input_account">
+        <state-number>673</state-number>
+        <data-type>bigint</data-type>
+      </column>
+      <column id="21" parent="5" name="amount">
+        <state-number>673</state-number>
+        <mandatory>1</mandatory>
+        <data-type>double precision</data-type>
+      </column>
+      <index id="22" parent="5" name="transaction_pkey">
+        <object-id>16421</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="23" parent="5" name="transaction_pkey">
+        <columns>id</columns>
+        <underlying-index>transaction_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="24" parent="5" name="transaction_output_account_fkey">
+        <columns>output_account</columns>
+        <ref-key>~.accounts.accounts_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="25" parent="5" name="transaction_input_account_fkey">
+        <columns>input_account</columns>
+        <ref-key>~.accounts.accounts_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>
